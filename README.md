@@ -1,2 +1,6 @@
 # Vislice
-nekineki za začetek
+Matematiki:
+
+Močnik
+Vega
+Vidav
