@@ -7,7 +7,6 @@ Vidav
 
 
 Predsednik države:
-
 Boruh faking Pahor
 
 Predsednik vlade:
