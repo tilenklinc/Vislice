@@ -9,7 +9,7 @@ PORAZ = "X"
 
 # Odpremo datoteko in ločimo besede
 bazen_besed =  []
-with open("Git\Vislice\\besede.txt", encoding="utf-8") as datoteka_bazena:
+with open("Git\\Vislice\\besede.txt", encoding="utf-8") as datoteka_bazena:
     for beseda in datoteka_bazena:
         bazen_besed.append(beseda.strip().lower())
 
@@ -25,7 +25,7 @@ class Igra:
 
 
     # Metoda za ustvarjanje seznamov pravilnih in napačnih črk
-    def pravilne_crke(self, crke):
+    def pravilne_crke_1(self, crke):
         seznam_pravilnih = []
         seznam_napacnih = []
         for znak in crke:
@@ -54,7 +54,7 @@ class Igra:
     #zmaga
     def je_zmaga(self):
         for crka in self.geslo:
-             if c not in self.crke:
+             if crka not in self.crke:
                  return False
         return True
     
@@ -84,13 +84,19 @@ class Igra:
 
         if ugibana_crka in self.geslo:
             # je uganil:
-            if self.zmaga():
+            if self.je_zmaga():
                 return ZMAGA
             else:
                 return PRAVILNA_CRKA     
 
         else:
-            if self.poraz():
+            if self.je_poraz():
                 return PORAZ
             else:
                 return NAPACNA_CRKA
+
+# funkcija, ki izbere naključno besede za novo igro
+def nova_igra():
+    import random
+    nakljucna_beseda = random.choice(bazen_besed)
+    return Igra(nakljucna_beseda)
