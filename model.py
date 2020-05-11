@@ -17,11 +17,11 @@ with open("Git\\Vislice\\besede.txt", encoding="utf-8") as datoteka_bazena:
 class Igra:
     #nastavim vrednost spremenljivk
     def __init__(self, geslo, crke=None):
-        self.geslo = geslo.lower
+        self.geslo = geslo.lower()
         if crke is None:
             self.crke = []
         else:
-            self.crke = crke.lower
+            self.crke = crke.lower()
 
 
     # Metoda za ustvarjanje seznamov pravilnih in napačnih črk
