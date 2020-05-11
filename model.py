@@ -17,15 +17,15 @@ with open("Git\Vislice\\besede.txt", encoding="utf-8") as datoteka_bazena:
 class Igra:
     #nastavim vrednost spremenljivk
     def __init__(self, geslo, crke=None):
-        self.geslo = geslo
+        self.geslo = geslo.lower
         if crke is None:
             self.crke = []
         else:
-            self.crke = crke
+            self.crke = crke.lower
 
 
     # Metoda za ustvarjanje seznamov pravilnih in napačnih črk
-    def pravilne_crke(crke):
+    def pravilne_crke(self, crke):
         seznam_pravilnih = []
         seznam_napacnih = []
         for znak in crke:
@@ -33,8 +33,31 @@ class Igra:
                 seznam_pravilnih.append(znak)
             else:
                 seznam_napacnih.append(znak)
+        return seznam_napacnih, seznam_pravilnih
+
+    # metoda, ki vrača le željeno (pravilne ali napačne)
+    def napacne_crke(self):
+        return [crka for crka in self.crke if crka not in self.geslo]
+    
+    def pravilne_crke(self):
+        return  [crka for crka in self.crke if crka in self.geslo]
 
     # Preštejem število napačnih ugibanj
-    def stevilo_napak():
-        len(seznam_napacnih)
+    def stevilo_napak(self):
+        return len(self.napacne_crke())
+
+    # metodi za določanje zmage ali poraza
+    # Poraz
+    def je_poraz(self):
+        return self.stevilo_napak() > STEVILO_DOVOLJENIH_NAPAK
+
+    #zmaga
+    def je_zmaga(self):
+        for crka in self.geslo:
+             if c not in self.crke:
+                 return False
+        return True
+    
+
+    
 
