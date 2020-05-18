@@ -100,3 +100,33 @@ def nova_igra():
     import random
     nakljucna_beseda = random.choice(bazen_besed)
     return Igra(nakljucna_beseda)
+
+
+class Vislice:
+    def __init__(self):
+        self.igre = {}
+
+    def prosti_id_igre(self):
+
+        if len(self.igre) == 0:
+            return 0
+        else:
+            return max(self.igre.keys()) + 1
+
+    def nova_igra(self):
+        
+        nov_id = self.prosti_id_igre()
+
+        sveza_igra = nova_igra()
+
+        self.igre[nov_id] = (sveza_igra, ZACETEK)
+
+        return nov_id
+
+    def ugibaj(self, id_igre, crka):
+
+        trenutna_igra, _= self.igre[id_igre]
+
+        novo_stanje = trenutna_igra.ugibaj(crka)
+
+        self.igre[id_igre] = (trenutna_igra, novo_stanje)
